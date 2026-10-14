@@ -5,3 +5,10 @@ tasks:
       - default
     cmd: |
       go build -o bin/veribib .
+  install:
+    deps:
+      - build
+    vars:
+      INSTALL_SOURCE: bin/veribib
+    cmd: |
+      mv {{.INSTALL_SOURCE}} {{.INSTALL_TARGET | default "~/.local/bin" }}
